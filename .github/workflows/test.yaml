@@ -38,7 +38,7 @@ jobs:
 
           run: |
             ./autogen.sh
-            ./configure
+            LIBS="-ldl" LDFLAGS="-static" ./configure
             make -j $(nproc)
 
       - name: Archive build artifacts
@@ -79,7 +79,7 @@ jobs:
 
     - name: run configure
       run: |
-        ./configure
+        LIBS="-ldl" LDFLAGS="-static" ./configure
 
     - name: build and install
       run: |
